@@ -51,8 +51,6 @@ class SamplerWindow(tkinter.Frame):
     self.playing = 0 #0=none; 1=wav; 2=mp3
 
   def askopenfile(self):
-
-    """Returns an opened file in read mode."""
     self.file=tkinter.filedialog.askopenfilename(mode='r', **self.file_opt)
     return self.file
 
@@ -81,12 +79,7 @@ class SamplerWindow(tkinter.Frame):
             mixer.init()
             mixer.music.load(self.file)
             mixer.music.play()
-    """Returns an opened file in read mode.
-    This time the dialog just returns a filename and the file is opened by your own code.
-    """
-
-    # get filename
-
+            
   def stoppreview(self):
     if self.playing==1:
         self.stream.stop_self.stream()
@@ -96,16 +89,9 @@ class SamplerWindow(tkinter.Frame):
         mixer.music.stop()
 
   def asksaveasfile(self):
-
-    """Returns an opened file in write mode."""
-
     return tkinter.filedialog.asksaveasfile(mode='w', **self.file_opt)
 
   def randomsound(self):
-
-    """Returns an opened file in write mode.
-    This time the dialog just returns a filename and the file is opened by your own code.
-    """
     if (len(self.sounds)==0): tkinter.messagebox.showinfo("Error", "Directory Not Selected")
     else:
         self.yourFile.delete(0, tkinter.constants.END)
@@ -114,7 +100,6 @@ class SamplerWindow(tkinter.Frame):
         print(self.file)
 
   def askdirectory(self):
-
     """Returns a selected directoryname."""
     name = tkinter.filedialog.askdirectory(**self.dir_opt)
     sounds=[]
